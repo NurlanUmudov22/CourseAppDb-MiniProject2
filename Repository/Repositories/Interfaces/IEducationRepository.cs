@@ -24,6 +24,6 @@ namespace Repository.Repositories.Interfaces
         Task<List<Education>> SortWithCreatedDateAsync(string order);
 
 
-        Task<Education> Update(Education education);
+        Task<Education> Update(int id);
     }
 }

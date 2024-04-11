@@ -1,9 +1,12 @@
 ﻿using CourseAppDb_MiniProject2.Controllers;
+using Service.Helpers.Enums;
 using Service.Helpers.Extensions;
 
 
 
 EducationController educationController = new EducationController();
+
+
 
 //await educationController.DeleteAsync();
 
@@ -13,7 +16,7 @@ EducationController educationController = new EducationController();
 
 //await educationController.SearchByNameAsync();
 
-//await educationController.GetAllWithGroupsAsync();
+await educationController.GetAllWithGroupsAsync();
 
 //await educationController.SortWithCreatedDate();
 
@@ -46,3 +49,81 @@ static void GetMenues()
 }
 
 GetMenues();
+
+
+
+
+
+//while (true)
+//{
+//    GetMenues();
+
+//Operation: string operationStr = Console.ReadLine();
+
+//    int operation;
+
+//    bool isCorrectOperationFormat = int.TryParse(operationStr, out operation);
+
+//    if (isCorrectOperationFormat)
+//    {
+//        switch (operation)
+//        {
+//            case (int)OperationType.GetAllEducations:
+//                educationController.GetAllAsync(); 
+//                break;
+//            case (int)OperationType.GetByIdEducation:
+//                educationController.GetByIdAsync();
+//                break;
+//            case (int)OperationType.DeleteEducation:
+//                educationController.DeleteAsync();
+//                break;
+//            case (int)OperationType.UpdateEducation:
+//                educationController.GetById();
+//                break;
+//            case (int)OperationType.SearchByNameEducation:
+//                educationController.SearchByNameAsync();
+//                break;
+//            case (int)OperationType.GetAllWithGroupsEducation:
+//                educationController.GetAllWithGroupsAsync();
+//                break;
+//            case (int)OperationType.SortWithCreatedDateEducation:
+//                educationController.GetAll();
+//                break;
+//            case (int)OperationType.GetAllGroups:
+//                groupController.GetAllAsync();
+//                break;
+//            case (int)OperationType.GetByIdGroup:
+//                groupController.GetByIdAsync();
+//                break;
+//            case (int)OperationType.DeleteGroup:
+//                groupController.DeleteAsync();
+//                break;
+//            case (int)OperationType.UpdateGroup:
+//                groupController.StudentDelete();
+//                break;
+//            case (int)OperationType.SearchByNameGroup:
+//                groupController.SearchByNameAsync();
+//                break;
+//            case (int)OperationType.FilterByEduName:
+//                groupController.GetAllStudentsByGroupId();
+//                break;
+//            case (int)OperationType.GetAllWithEducationIdGroups:
+//                groupController.SearchGroupsByName();
+//                break;
+//            case (int)OperationType.SortWithCapacityGroup:
+//                groupController.SearchStudentsByNameOrSurname();
+//                break;
+//                default:
+//                ConsoleColor.Red.WriteConsole("Operation format is wrong, please choose again");
+//                goto Operation;
+
+//        }
+//    }
+//    else
+//    {
+//        ConsoleColor.Red.WriteConsole("Operations is wrong, please add operation again ");
+//        goto Operation;
+
+//    }
+//}
+

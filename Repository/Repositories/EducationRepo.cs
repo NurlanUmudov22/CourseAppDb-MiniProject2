@@ -53,9 +53,9 @@ namespace Repository.Repositories
             return await _context.Educations.ToListAsync();
         }
 
-        public Task<Education> Update(Education education)
+        public async Task<Education> Update(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Educations.FirstOrDefaultAsync(m => m.Id == id);
         }
     }
 }

@@ -19,12 +19,12 @@ namespace Service.Services.Interfaces
 
         Task<List<Education>> SearchByNameAsync(string searchText);  //+
 
-        Task<List<Education>> GetAllWithGroupsAsync();
+        Task<List<Domain.Models.Group>> GetAllWithGroupsAsync();
 
         Task<List<Education>> SortWithCreatedDateAsync(string order);
 
 
-        Task<Education> Update(Education education);
+        Task<Education> Update(int id);
 
 
 

@@ -48,9 +48,9 @@ namespace Service.Services
             
         }
 
-        public async Task<List<Education>> GetAllWithGroupsAsync()
+        public async Task<List<Domain.Models.Group>> GetAllWithGroupsAsync()
         {
-            var educations = await _context.Educations.Include(m => m.Group).ToListAsync();
+            var educations = await _context.Groups.Include(m => m.Education.Group).ToListAsync();
             if (educations.Count == 0)
             {
                 throw new NotFoundException("Data not found");
@@ -92,9 +92,18 @@ namespace Service.Services
             return  await _context.Educations.ToListAsync();
         }
 
-        public Task<Education> Update(Education education)
+
+        //--
+        public async Task<Education> Update(int id)
         {
-            throw new NotImplementedException();
+            //var education = await _context.Update(id);
+
+            //if (education == null)
+            //{
+            //    throw new NotFoundException("Data not found");
+
+            //}
+            return null;
         }
     }
 }

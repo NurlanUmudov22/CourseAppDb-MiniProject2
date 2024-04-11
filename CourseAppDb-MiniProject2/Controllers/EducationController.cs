@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Service.Helpers.Extensions;
 using Service.Services;
 using Service.Services.Interfaces;
@@ -130,34 +131,34 @@ namespace CourseAppDb_MiniProject2.Controllers
             }
         }
 
-        //public async Task GetAllWithGroupsAsync()
-        //{
-            
-        //    try
-        //    {
-        //        var educations = await _educationService.GetAllWithGroupsAsync();
+        public async Task GetAllWithGroupsAsync()
+        {
 
-        //        if (educations.Count == 0)
-        //        {
-        //            ConsoleColor.Red.WriteConsole("Data notfound");
-        //        }
-        //        foreach (var item in educations)
-        //        {
-        //            string result = $"Name: {item.Name}, Groups: {string.Join(", ", item.Group)}";
-        //            Console.WriteLine(result);
-        //        }
-        //    }
-        //    catch (Exception ex )
-        //    {
-        //        ConsoleColor.Red.WriteConsole(ex.Message);
-        //    }    
-        //}
+            try
+            {
+                var educations = await _educationService.GetAllWithGroupsAsync();
+
+                if (educations.Count == 0)
+                {
+                    ConsoleColor.Red.WriteConsole("Data notfound");
+                }
+                foreach (var item in educations)
+                {
+                    string result = $"Name: {item.Name}, Groups: {string.Join(", ", item.Education.Name)}";
+                    Console.WriteLine(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleColor.Red.WriteConsole(ex.Message);
+            }
+        }
 
 
         //public async Task SortWithCreatedDate()
         //{
         //    ConsoleColor.Blue.WriteConsole("Choose filter: ");
-        //     Name: string order = Console.ReadLine();
+        //Name: string order = Console.ReadLine();
 
 
         //    if (string.IsNullOrWhiteSpace(order))
@@ -168,7 +169,7 @@ namespace CourseAppDb_MiniProject2.Controllers
 
         //    try
         //    {
-        //           var educations = await _educationService.GetAllWithGroupsAsync();
+        //        var educations = await _educationService.SortWithCreatedDate();
 
         //        foreach (var item in educations)
         //        {
@@ -184,5 +185,7 @@ namespace CourseAppDb_MiniProject2.Controllers
         //    }
 
         //}
+
+              
     }
 }
