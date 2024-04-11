@@ -60,7 +60,7 @@ namespace Service.Services
 
         public  async Task<Education> GetByIdAsync(int id)
         {
-            var data = _context.Educations.FirstOrDefault(m => m.Id == id);
+            var data = await _context.Educations.FirstOrDefaultAsync(m => m.Id == id);
 
             if (data == null)
             {

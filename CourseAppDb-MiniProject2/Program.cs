@@ -15,12 +15,34 @@ EducationController educationController = new EducationController();
 
 //await educationController.GetAllWithGroupsAsync();
 
-await educationController.SortWithCreatedDate();
+//await educationController.SortWithCreatedDate();
 
 
 
-//static void GetMenues()
-//{
-//    ConsoleColor.Cyan.WriteConsole("Choose one operation : \n  1. GetAll Educations \n " + " 2. GetById Education \n  3. Education delete \n  4. Education update \n  5. SearchByName Education \n  6. GetAllWithGroups Education \n  7. SortWithCreatedDate Education \n  8. Student create \n  9. Student update \n  10. Get student by Id \n  11. Student delete \n  12. Get student by age \n  13. Get all students by group Id \n  14. Search groups by name \n  15. Search students by name or surname \n  16. Get All Students");
 
-//}
+
+
+
+
+GroupController groupController = new GroupController();
+//await groupController.DeleteAsync();
+
+//await groupController.GetAllAsync();
+
+//await groupController.SearchByNameAsync();
+
+//await groupController.GetByIdAsync();
+
+
+
+
+
+
+
+static void GetMenues()
+{
+    ConsoleColor.Cyan.WriteConsole("Choose one operation : \n  1. GetAll Educations \n " + " 2. GetById Education \n  3. Education delete \n  4. Education update \n  5. SearchByName Education \n  6. GetAllWithGroups Education \n  7. SortWithCreatedDate Education \n  8. GetAll Groups \n  9. GetById Group \n  10. Delete Group \n  11. Update Group \n  12. SearchByName Group \n  13. FilterByEduName  \n  14. GetAllWithEducationId Groups \n  15. SortWithCapacity Group \n ");
+
+}
+
+GetMenues();

@@ -39,7 +39,7 @@ namespace Repository.Repositories
 
         public async Task<Education> GetByIdAsync(int id)
         {
-           return   _context.Educations.FirstOrDefault(m => m.Id == id);
+           return  await  _context.Educations.FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<List<Education>> SearchByNameAsync(string searchText)

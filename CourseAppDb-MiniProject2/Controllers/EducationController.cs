@@ -43,8 +43,6 @@ namespace CourseAppDb_MiniProject2.Controllers
                 ConsoleColor.Red.WriteConsole("Id format is wrong, please add again");
                 goto Id;
             }
-
-
         }
 
         public async Task GetAllAsync()
