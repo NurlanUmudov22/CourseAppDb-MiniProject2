@@ -16,9 +16,9 @@ EducationController educationController = new EducationController();
 
 //await educationController.SearchByNameAsync();
 
-await educationController.GetAllWithGroupsAsync();
+//await educationController.GetAllWithGroupsAsync();
 
-//await educationController.SortWithCreatedDate();
+await educationController.SortWithCreatedDate();
 
 
 
@@ -37,18 +37,18 @@ GroupController groupController = new GroupController();
 //await groupController.GetByIdAsync();
 
 
+//await groupController.GetAllWithEducationIdAsync();
 
 
 
 
+//static void GetMenues()
+//{
+//    ConsoleColor.Cyan.WriteConsole("Choose one operation : \n  1. GetAll Educations \n " + " 2. GetById Education \n  3. Education delete \n  4. Education update \n  5. SearchByName Education \n  6. GetAllWithGroups Education \n  7. SortWithCreatedDate Education \n  8. GetAll Groups \n  9. GetById Group \n  10. Delete Group \n  11. Update Group \n  12. SearchByName Group \n  13. FilterByEduName  \n  14. GetAllWithEducationId Groups \n  15. SortWithCapacity Group \n ");
 
-static void GetMenues()
-{
-    ConsoleColor.Cyan.WriteConsole("Choose one operation : \n  1. GetAll Educations \n " + " 2. GetById Education \n  3. Education delete \n  4. Education update \n  5. SearchByName Education \n  6. GetAllWithGroups Education \n  7. SortWithCreatedDate Education \n  8. GetAll Groups \n  9. GetById Group \n  10. Delete Group \n  11. Update Group \n  12. SearchByName Group \n  13. FilterByEduName  \n  14. GetAllWithEducationId Groups \n  15. SortWithCapacity Group \n ");
+//}
 
-}
-
-GetMenues();
+//GetMenues();
 
 
 
@@ -108,7 +108,7 @@ GetMenues();
 //                groupController.GetAllStudentsByGroupId();
 //                break;
 //            case (int)OperationType.GetAllWithEducationIdGroups:
-//                groupController.SearchGroupsByName();
+//                groupController.GetAllWithEducationIdAsync();
 //                break;
 //            case (int)OperationType.SortWithCapacityGroup:
 //                groupController.SearchStudentsByNameOrSurname();

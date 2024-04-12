@@ -24,7 +24,7 @@ namespace Service.Services.Interfaces
         Task<List<Education>> SortWithCreatedDateAsync(string order);
 
 
-        Task<Education> Update(int id);
+        Task<Education> UpdateAsync(int id, string name);
 
 
 

@@ -48,9 +48,18 @@ namespace Service.Services
             return await _context.Groups.Include(m=>m.Education).ToListAsync();
         }
 
-        public Task<List<Domain.Models.Group>> GetAllWithEducationIdAsync(int? id)
+        public async Task<List<Domain.Models.Group>> GetAllWithEducationIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            //if (id == null) throw new ArgumentNullException(nameof(id));
+
+            var data = await _context.Groups.Include(m => m.Education).Where(m => m.EducationId == id).ToListAsync();
+            if (data == null)
+            {
+                throw new("Data not found");
+            }
+
+            return data;
+
         }
 
         public async Task<Domain.Models.Group> GetByIdAsync(int id)

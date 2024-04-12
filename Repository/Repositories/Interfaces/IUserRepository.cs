@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Services.Interfaces
+namespace Repository.Repositories.Interfaces
 {
-    public interface IUserService
+    public  interface IUserRepository
     {
         //Task CreateUserAsync(string fullName, string username, string email, string password);
 
-        //Task<bool> LoginAsync(string username, string password);
+        //Task<bool> LoginAsync(string usernameOrEmail, string password);
+
 
     }
 }

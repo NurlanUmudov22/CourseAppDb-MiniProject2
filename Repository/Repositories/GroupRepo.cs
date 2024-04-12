@@ -27,7 +27,7 @@ namespace Repository.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<Group>> FilterByEduName(string name)
+        public Task<List<Group>> FilterByEduNameAsync(string name)
         {
             throw new NotImplementedException();
         }
@@ -42,6 +42,12 @@ namespace Repository.Repositories
         {
             return await _context.Groups.Include(m => m.Education).Where(m => m.EducationId == id).ToListAsync();
         }
+
+        //public async  Task<List<Group>> GetAllWithEduIdAsync(int id)
+        //{
+        //    return await _context.Groups.Include(m => m.Education).Where(m => m.EducationId == id).ToListAsync();
+
+        //}
 
         public async  Task<Group> GetByIdAsync(int id)
         {

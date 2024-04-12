@@ -85,25 +85,52 @@ namespace Service.Services
             switch (order)
             {
                 case nameof(SortWithCreatedDate.asc):
-                    return await _context.Educations.OrderBy(m=>m.CreatedDate).ToListAsync();
+                    return await _context.Educations.OrderBy(m => m.CreatedDate).ToListAsync();
                 case nameof(SortWithCreatedDate.desc):
                     return await _context.Educations.OrderByDescending(m => m.CreatedDate).ToListAsync();
             }
             return  await _context.Educations.ToListAsync();
         }
 
+        public Task<Education> UpdateAsync(int id, string name)
+        {
+            throw new NotImplementedException();
+        }
+
 
         //--
-        public async Task<Education> Update(int id)
-        {
-            //var education = await _context.Update(id);
+        //public async Task<Education> UpdateNameAsync(int id, string name)
+        //{
+        //    var education = await _context.Educations.Update(id);
 
-            //if (education == null)
-            //{
-            //    throw new NotFoundException("Data not found");
+        //    if (education == null)
+        //    {
+        //        throw new NotFoundException("Data not found");
 
-            //}
-            return null;
-        }
+        //    }
+        //    else
+        //    {
+        //        education.Name = name;
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    return education;
+        //}
+        //public async Task<Education> UpdateColorAsync(int id, string color)
+        //{
+        //    var education = await _context.Educations.Update(id);
+
+        //    if (education == null)
+        //    {
+        //        throw new NotFoundException("Data not found");
+
+        //    }
+        //    else
+        //    {
+        //        education.Color = color;
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    return education;
+
+        //}
     }
 }

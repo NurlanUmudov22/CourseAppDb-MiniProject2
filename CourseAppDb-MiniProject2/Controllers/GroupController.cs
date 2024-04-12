@@ -48,6 +48,7 @@ namespace CourseAppDb_MiniProject2.Controllers
             if (datas.Count == 0)
             {
                 ConsoleColor.Red.WriteConsole("Data NotFound");
+               
             }
 
             foreach (var item in datas)
@@ -125,6 +126,49 @@ namespace CourseAppDb_MiniProject2.Controllers
                 ConsoleColor.Red.WriteConsole(ex.Message);
                 goto Name;
             }
+        }
+
+
+        public async Task GetAllWithEducationIdAsync()
+        {
+            Console.WriteLine("Add Education id:");
+             Id:  string eduId = Console.ReadLine();
+
+            int id;
+            bool isCorrectIdFormat = int.TryParse(eduId, out id);
+            if (isCorrectIdFormat)
+
+                try
+                {
+                   
+                    var datas = await _groupService.GetAllWithEducationIdAsync(id);
+
+                    if (datas.Count == 0)
+                    {
+                        ConsoleColor.Red.WriteConsole("Data NotFound");
+                        goto Id;
+                    }
+
+                    foreach (var item in datas)
+                    {
+                        string data = $"Name: {item.Name}, Education: {item.Education.Name}";
+                        ConsoleColor.Cyan.WriteConsole(data);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ConsoleColor.Red.WriteConsole(ex.Message);
+                    goto Id;
+
+                }
+
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Id format is wrong, please add again");
+                goto Id;
+            }
+
         }
     }
 }

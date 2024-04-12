@@ -154,38 +154,38 @@ namespace CourseAppDb_MiniProject2.Controllers
             }
         }
 
+        public async Task SortWithCreatedDate()
+        {
+            ConsoleColor.Blue.WriteConsole("Choose filter: ");
+        Name: string order = Console.ReadLine();
 
-        //public async Task SortWithCreatedDate()
-        //{
-        //    ConsoleColor.Blue.WriteConsole("Choose filter: ");
-        //Name: string order = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(order))
+            {
+                ConsoleColor.Red.WriteConsole("Input can't be empty");
+                goto Name;
+            }
+
+            try
+            {
+                var educations = await _educationService.GetAllAsync();
+               
+
+                foreach (var item in educations)
+                {
+                    string data = $" Education name: {item.Name}, Color : {item.Color}, CreatedDate: {item.CreatedDate}";
+                    ConsoleColor.Cyan.WriteConsole(data);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                ConsoleColor.Red.WriteConsole(ex.Message);
+            }
+
+        }
 
 
-        //    if (string.IsNullOrWhiteSpace(order))
-        //    {
-        //        ConsoleColor.Red.WriteConsole("Input can't be empty");
-        //        goto Name;
-        //    }
-
-        //    try
-        //    {
-        //        var educations = await _educationService.SortWithCreatedDate();
-
-        //        foreach (var item in educations)
-        //        {
-        //            string data = $" Education name: {item.Name}, Color : {item.Color}, CreatedDate: {item.CreatedDate}";
-        //            ConsoleColor.Cyan.WriteConsole(data);
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        ConsoleColor.Red.WriteConsole(ex.Message);
-        //    }
-
-        //}
-
-              
     }
 }
