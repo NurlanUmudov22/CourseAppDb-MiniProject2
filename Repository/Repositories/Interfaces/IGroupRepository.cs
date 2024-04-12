@@ -19,7 +19,7 @@ namespace Repository.Repositories.Interfaces
         Task<List<Group>> SearchByNameAsync(string searchText); //+
         Task<List<Group>> GetAllWithEducationIdAsync(int? id);  //+
 
-        Task<List<Group>> SortWithCapacityAsync(string order);
+        Task<List<Group>> SortWithCapacityAsync(string order); //+
 
 
         Task<Group> Update(Group group);

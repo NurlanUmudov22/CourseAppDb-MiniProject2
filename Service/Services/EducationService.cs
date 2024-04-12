@@ -82,14 +82,30 @@ namespace Service.Services
 
         public async Task<List<Education>> SortWithCreatedDateAsync(string order)
         {
-            switch (order)
+            //switch (order)
+            //{
+            //    case nameof(SortWithCreatedDate.asc):
+            //        return await _context.Educations.OrderBy(m => m.CreatedDate).ToListAsync();
+            //    case nameof(SortWithCreatedDate.desc):
+            //        return await _context.Educations.OrderByDescending(m => m.CreatedDate).ToListAsync();
+            //}
+            if(order == "A")
             {
-                case nameof(SortWithCreatedDate.asc):
-                    return await _context.Educations.OrderBy(m => m.CreatedDate).ToListAsync();
-                case nameof(SortWithCreatedDate.desc):
-                    return await _context.Educations.OrderByDescending(m => m.CreatedDate).ToListAsync();
+                return await _context.Educations.OrderBy(m => m.CreatedDate).ToListAsync();
+
             }
-            return  await _context.Educations.ToListAsync();
+            else if (order == "Z")
+            {
+                return await _context.Educations.OrderByDescending(m => m.CreatedDate).ToListAsync();
+
+            }
+            else
+            {
+                throw new ("Invalid filter");
+            }
+
+
+
         }
 
         public Task<Education> UpdateAsync(int id, string name)

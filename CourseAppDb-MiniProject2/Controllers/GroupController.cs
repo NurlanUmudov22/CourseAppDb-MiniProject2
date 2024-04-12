@@ -22,7 +22,7 @@ namespace CourseAppDb_MiniProject2.Controllers
         public async Task DeleteAsync()
         {
             ConsoleColor.Blue.WriteConsole("Add group id:");
-             Id: string idStr = Console.ReadLine();
+        Id: string idStr = Console.ReadLine();
             int id;
             bool isCorrectIdFormat = int.TryParse(idStr, out id);
             if (isCorrectIdFormat)
@@ -49,7 +49,7 @@ namespace CourseAppDb_MiniProject2.Controllers
             if (datas.Count == 0)
             {
                 ConsoleColor.Red.WriteConsole("Data NotFound");
-               
+
             }
 
             foreach (var item in datas)
@@ -133,7 +133,7 @@ namespace CourseAppDb_MiniProject2.Controllers
         public async Task GetAllWithEducationIdAsync()
         {
             Console.WriteLine("Add Education id:");
-             Id:  string eduId = Console.ReadLine();
+        Id: string eduId = Console.ReadLine();
 
             int id;
             bool isCorrectIdFormat = int.TryParse(eduId, out id);
@@ -141,7 +141,7 @@ namespace CourseAppDb_MiniProject2.Controllers
 
                 try
                 {
-                   
+
                     var datas = await _groupService.GetAllWithEducationIdAsync(id);
 
                     if (datas.Count == 0)
@@ -176,7 +176,7 @@ namespace CourseAppDb_MiniProject2.Controllers
         public async Task FilterByEduNameAsync()
         {
             ConsoleColor.Blue.WriteConsole("Add education name:");
-              Edu: string name = Console.ReadLine();
+        Edu: string name = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -213,5 +213,52 @@ namespace CourseAppDb_MiniProject2.Controllers
                 }
             }
         }
+
+
+        public async Task SortWithCapacityAsync()
+        {
+            ConsoleColor.Blue.WriteConsole("Write filter: Asc: A /  Desc: Z ");
+        Name: string order = Console.ReadLine();
+
+
+            if (string.IsNullOrWhiteSpace(order))
+            {
+                ConsoleColor.Red.WriteConsole("Input can't be empty");
+                goto Name;
+            }
+
+            try
+            {
+
+                var groups = await _groupService.SortWithCapacityAsync(order);
+
+                if (order == "A")
+                {
+                    foreach (var item in groups)
+                    {
+                        string data = $" Group name: {item.Name}, Capacity : {item.Capacity}";
+                        ConsoleColor.Cyan.WriteConsole(data);
+                    }
+                }
+                else if (order == "Z")
+                {
+                    foreach (var item in groups)
+                    {
+                        string data = $" Group name: {item.Name}, Capacity : {item.Capacity}";
+                        ConsoleColor.Cyan.WriteConsole(data);
+                    }
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                ConsoleColor.Red.WriteConsole(ex.Message);
+                goto Name;
+            }
+        }
+
     }
 }

@@ -90,9 +90,22 @@ namespace Service.Services
             return search;
         }
 
-        public Task<List<Group>> SortWithCapacityAsync(string order)
+        public  async Task<List<Domain.Models.Group>> SortWithCapacityAsync(string order)
         {
-            throw new NotImplementedException();
+            if (order == "A")
+            {
+                return await _context.Groups.OrderBy(m => m.Capacity).ToListAsync();
+
+            }
+            else if (order == "Z")
+            {
+                return await _context.Groups.OrderByDescending(m => m.Capacity).ToListAsync();
+
+            }
+            else
+            {
+                throw new ("Invalid filter");
+            }
         }
 
         public Task<Group> Update(Group group)

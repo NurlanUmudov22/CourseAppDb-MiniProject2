@@ -18,7 +18,7 @@ namespace Service.Services.Interfaces
         Task<List<Domain.Models.Group>> SearchByNameAsync(string searchText);
         Task<List<Domain.Models.Group>> GetAllWithEducationIdAsync(int? id);
 
-        Task<List<Group>> SortWithCapacityAsync(string order);
+        Task<List<Domain.Models.Group>> SortWithCapacityAsync(string order);
 
 
         Task<Group> Update(Group group);

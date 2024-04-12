@@ -21,7 +21,7 @@ namespace Repository.Repositories.Interfaces
 
         Task<List<Education>> GetAllWithGroupsAsync(); //+
 
-        Task<List<Education>> SortWithCreatedDateAsync(string order);
+        Task<List<Education>> SortWithCreatedDateAsync(string order); //+
 
 
         Task<Education> Update(int id);

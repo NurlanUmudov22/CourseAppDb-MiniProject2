@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Service.Helpers.Enums;
 using Service.Helpers.Extensions;
 using Service.Services;
 using Service.Services.Interfaces;
@@ -154,9 +155,9 @@ namespace CourseAppDb_MiniProject2.Controllers
             }
         }
 
-        public async Task SortWithCreatedDate()
+        public async Task SortWithCreatedDateAsync()
         {
-            ConsoleColor.Blue.WriteConsole("Choose filter: ");
+            ConsoleColor.Blue.WriteConsole("Write filter: Asc: A /  Desc: Z ");
         Name: string order = Console.ReadLine();
 
 
@@ -168,20 +169,34 @@ namespace CourseAppDb_MiniProject2.Controllers
 
             try
             {
-                var educations = await _educationService.GetAllAsync();
-               
 
-                foreach (var item in educations)
+                var educations = await _educationService.SortWithCreatedDateAsync(order);
+
+                if (order == "A")
                 {
-                    string data = $" Education name: {item.Name}, Color : {item.Color}, CreatedDate: {item.CreatedDate}";
-                    ConsoleColor.Cyan.WriteConsole(data);
+                    foreach (var item in educations)
+                    {
+                        string data = $" Education name: {item.Name}, Color : {item.Color}, CreatedDate: {item.CreatedDate}";
+                        ConsoleColor.Cyan.WriteConsole(data);
+                    }
                 }
+                else if (order == "Z")
+                {
+                    foreach (var item in educations)
+                    {
+                        string data = $" Education name: {item.Name}, Color : {item.Color}, CreatedDate: {item.CreatedDate}";
+                        ConsoleColor.Cyan.WriteConsole(data);
+                    }
+                }
+
+               
 
             }
             catch (Exception ex)
             {
 
                 ConsoleColor.Red.WriteConsole(ex.Message);
+                goto Name;
             }
 
         }

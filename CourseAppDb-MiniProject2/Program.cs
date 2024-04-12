@@ -18,7 +18,7 @@ EducationController educationController = new EducationController();
 
 //await educationController.GetAllWithGroupsAsync();
 
-//await educationController.SortWithCreatedDate();----
+//await educationController.SortWithCreatedDateAsync();
 
 
 
@@ -40,7 +40,9 @@ GroupController groupController = new GroupController();
 
 //await groupController.GetAllWithEducationIdAsync();
 
-await groupController.FilterByEduNameAsync();
+//await groupController.FilterByEduNameAsync();
+
+ //await groupController.SortWithCapacityAsync();
 
 
 
@@ -90,7 +92,7 @@ await groupController.FilterByEduNameAsync();
 //                educationController.GetAllWithGroupsAsync();
 //                break;
 //            case (int)OperationType.SortWithCreatedDateEducation:
-//                educationController.GetAll();
+//                educationController.SortWithCreatedDateAsync();
 //                break;
 //            case (int)OperationType.GetAllGroups:
 //                groupController.GetAllAsync();
@@ -108,13 +110,13 @@ await groupController.FilterByEduNameAsync();
 //                groupController.SearchByNameAsync();
 //                break;
 //            case (int)OperationType.FilterByEduName:
-//                groupController.GetAllStudentsByGroupId();
+//                groupController.FilterByEduNameAsync();
 //                break;
 //            case (int)OperationType.GetAllWithEducationIdGroups:
 //                groupController.GetAllWithEducationIdAsync();
 //                break;
 //            case (int)OperationType.SortWithCapacityGroup:
-//                groupController.SearchStudentsByNameOrSurname();
+//                groupController.SortWithCapacityAsync();
 //                break;
 //                default:
 //                ConsoleColor.Red.WriteConsole("Operation format is wrong, please choose again");
