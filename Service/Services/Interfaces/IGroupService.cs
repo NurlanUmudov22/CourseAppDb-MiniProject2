@@ -23,6 +23,6 @@ namespace Service.Services.Interfaces
 
         Task<Group> Update(Group group);
 
-        Task<List<Group>> FilterByEduName(string name);
+        Task<List<Domain.Models.Group>> FilterByEduNameAsync(string name);
     }
 }

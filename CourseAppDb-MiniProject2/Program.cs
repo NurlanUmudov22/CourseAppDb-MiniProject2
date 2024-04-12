@@ -18,7 +18,8 @@ EducationController educationController = new EducationController();
 
 //await educationController.GetAllWithGroupsAsync();
 
-await educationController.SortWithCreatedDate();
+//await educationController.SortWithCreatedDate();----
+
 
 
 
@@ -38,6 +39,8 @@ GroupController groupController = new GroupController();
 
 
 //await groupController.GetAllWithEducationIdAsync();
+
+await groupController.FilterByEduNameAsync();
 
 
 

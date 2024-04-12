@@ -1,4 +1,5 @@
-﻿using Service.Helpers.Extensions;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Service.Helpers.Extensions;
 using Service.Services;
 using Service.Services.Interfaces;
 using System;
@@ -169,6 +170,48 @@ namespace CourseAppDb_MiniProject2.Controllers
                 goto Id;
             }
 
+        }
+
+
+        public async Task FilterByEduNameAsync()
+        {
+            ConsoleColor.Blue.WriteConsole("Add education name:");
+              Edu: string name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                ConsoleColor.Red.WriteConsole("Input can't be empty");
+                goto Edu;
+            }
+            else
+            {
+                try
+                {
+
+                    var result = await _groupService.FilterByEduNameAsync(name);
+                    if (result.Count != 0)
+                    {
+                        foreach (var item in result)
+                        {
+                            string data = $"Group Name: {item.Name}, Education: {item.Education.Name}";
+                            Console.WriteLine(data);
+                        }
+                    }
+                    else
+                    {
+                        ConsoleColor.Red.WriteConsole("There is no education with this name");
+                        goto Edu;
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    ConsoleColor.Red.WriteConsole(ex.Message);
+                    goto Edu;
+
+                }
+            }
         }
     }
 }

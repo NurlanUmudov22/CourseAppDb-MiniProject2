@@ -24,7 +24,7 @@ namespace Repository.Repositories.Interfaces
 
         Task<Group> Update(Group group);
 
-        Task<List<Group>> FilterByEduNameAsync(string name);
+        Task<List<Group>> FilterByEduNameAsync(string name); //+
 
         //Task<List<Group>> GetAllWithEduIdAsync(int id);
 

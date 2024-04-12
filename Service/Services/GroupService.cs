@@ -38,9 +38,15 @@ namespace Service.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<Group>> FilterByEduName(string name)
+        public async Task<List<Domain.Models.Group>> FilterByEduNameAsync(string name)
         {
-            throw new NotImplementedException();
+            var data = await _context.Groups.Include(m => m.Education).Where(m => m.Education.Name == name).ToListAsync();
+            if (data == null)
+            {
+                throw new NotFoundException ("Data not found");
+            }
+
+            return data;
         }
 
         public async Task<List<Domain.Models.Group>> GetAllAsync()
@@ -55,7 +61,7 @@ namespace Service.Services
             var data = await _context.Groups.Include(m => m.Education).Where(m => m.EducationId == id).ToListAsync();
             if (data == null)
             {
-                throw new("Data not found");
+                throw new NotFoundException ("Data not found");
             }
 
             return data;
