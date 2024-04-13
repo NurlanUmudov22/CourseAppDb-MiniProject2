@@ -10,6 +10,7 @@ using System.ComponentModel.Design;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CourseAppDb_MiniProject2.Controllers
@@ -57,7 +58,7 @@ namespace CourseAppDb_MiniProject2.Controllers
 
             foreach (var item in datas)
             {
-                string data = $"Name: {item.Name}, Color : {item.Color}";
+                string data = $"Id: {item.Id}, Name: {item.Name}, Color : {item.Color}, CreatedDate: {item.CreatedDate}";
                 ConsoleColor.Cyan.WriteConsole(data);
 
             }
@@ -200,6 +201,72 @@ namespace CourseAppDb_MiniProject2.Controllers
             }
 
         }
+
+
+        public async Task CreateEduAsync()
+        {
+            ConsoleColor.Blue.WriteConsole("Add Education name:");
+              Name: string name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                ConsoleColor.Red.WriteConsole("Input can't be empty");
+                goto Name;
+                
+
+            }        
+            var data = await _educationService.GetAllAsync();
+            if (data.Any(m => m.Name.ToLower() == name.ToLower()))
+            {
+                ConsoleColor.Red.WriteConsole("Education names can not be the same");
+                goto Name;
+            }
+            if (!Regex.IsMatch(name, @"^[\p{L}\p{M}' \.\-]+$"))
+            {
+                ConsoleColor.Red.WriteConsole("Format is wrong");
+                goto Name;
+            }
+
+            ConsoleColor.Blue.WriteConsole("Add color :");
+              Color: string color = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(color))
+            {
+                ConsoleColor.Red.WriteConsole("Input can't be empty");
+                goto Color;
+
+
+            }
+            var colors = await _educationService.GetAllAsync();
+            if (colors.Any(m => m.Color.ToLower() == color.ToLower()))
+            {
+                ConsoleColor.Red.WriteConsole("Color can not be the same");
+                goto Color;
+            }
+            if (!Regex.IsMatch(color, @"^[\p{L}\p{M}' \.\-]+$"))
+            {
+                ConsoleColor.Red.WriteConsole("Format is wrong");
+                goto Color;
+            }
+            else
+            {
+                try
+                {
+
+                    await _educationService.CreateEduAsync(new Education { Name= name, Color=color, CreatedDate = DateTime.Now });
+                    ConsoleColor.Green.WriteConsole("Education successfully added");
+                }
+                catch (Exception ex)
+                {
+                    ConsoleColor.Red.WriteConsole(ex.Message);
+                    goto Name;
+                }
+            }
+
+        }
+
+
+
 
 
     }

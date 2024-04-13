@@ -20,6 +20,14 @@ namespace Repository.Repositories
 
         }
 
+        public async Task CreateAsync(Education education)
+        {
+             await _context.Educations.AddAsync(education);
+            await _context.SaveChangesAsync();
+
+
+        }
+
         public async Task DeleteAsync(int? id)
         {
             _context.Remove(id);

@@ -25,6 +25,14 @@ namespace Service.Services
 
         }
 
+        public async  Task CreateEduAsync(Education education)
+        {
+           var data = await _context.Educations.AddAsync(education);
+            await _context.SaveChangesAsync();
+
+            if (data == null) throw new ArgumentNullException();
+
+        }
 
         public async Task DeleteAsync(int? id)
         {
@@ -82,13 +90,7 @@ namespace Service.Services
 
         public async Task<List<Education>> SortWithCreatedDateAsync(string order)
         {
-            //switch (order)
-            //{
-            //    case nameof(SortWithCreatedDate.asc):
-            //        return await _context.Educations.OrderBy(m => m.CreatedDate).ToListAsync();
-            //    case nameof(SortWithCreatedDate.desc):
-            //        return await _context.Educations.OrderByDescending(m => m.CreatedDate).ToListAsync();
-            //}
+           
             if(order == "A")
             {
                 return await _context.Educations.OrderBy(m => m.CreatedDate).ToListAsync();

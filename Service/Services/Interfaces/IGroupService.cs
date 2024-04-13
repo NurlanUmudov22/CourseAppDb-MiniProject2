@@ -25,5 +25,7 @@ namespace Service.Services.Interfaces
         Task<Group> Update(Group group);
 
         Task<List<Domain.Models.Group>> FilterByEduNameAsync(string name);
+
+        Task CreateGroupAsync(Domain.Models.Group group);
     }
 }

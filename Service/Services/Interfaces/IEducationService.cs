@@ -26,6 +26,7 @@ namespace Service.Services.Interfaces
 
         Task<Education> UpdateAsync(int id, string name);
 
+        Task CreateEduAsync(Education education);
 
 
 

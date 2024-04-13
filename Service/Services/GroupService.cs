@@ -22,6 +22,15 @@ namespace Service.Services
 
         }
 
+        public async Task CreateGroupAsync(Domain.Models.Group group)
+        {
+            var data = await _context.Groups.AddAsync(group);
+            await _context.SaveChangesAsync();
+
+            if (data == null) throw new ArgumentNullException();
+
+
+        }
 
         public async Task DeleteAsync(int? id)
         {

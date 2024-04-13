@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Service.Helpers.Extensions;
 using Service.Services;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CourseAppDb_MiniProject2.Controllers
@@ -13,10 +16,12 @@ namespace CourseAppDb_MiniProject2.Controllers
     public class GroupController
     {
         private readonly GroupService _groupService;
+        //private readonly EducationService _educationService;
 
         public GroupController()
         {
             _groupService = new GroupService();
+            //_educationService = new EducationService();
         }
 
         public async Task DeleteAsync()
@@ -259,6 +264,94 @@ namespace CourseAppDb_MiniProject2.Controllers
                 goto Name;
             }
         }
+
+        public async Task CreateGroupAsync()
+        {
+            ConsoleColor.Blue.WriteConsole("Add Group name:");
+          Name: string name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                ConsoleColor.Red.WriteConsole("Input can't be empty");
+                goto Name;
+
+
+            }
+            if (name.Count() > 30)
+            {
+                ConsoleColor.Red.WriteConsole("The group name cannot be more than 30 characters");
+                goto Name;
+            }
+            var data = await _groupService.GetAllAsync();
+            if (data.Any(m => m.Name.ToLower() == name.ToLower()))
+            {
+                ConsoleColor.Red.WriteConsole("Group names can not be the same");
+                goto Name;
+            }
+           
+
+
+            ConsoleColor.Blue.WriteConsole("Add capacity;");
+             Capa:  string capacity = Console.ReadLine();
+
+            int Cap;
+            bool isCorrectidCapFormat = int.TryParse(capacity, out Cap);
+            if (isCorrectidCapFormat)
+            {
+                ConsoleColor.Blue.WriteConsole("Add education Id:");
+            Id: string idStr = Console.ReadLine();
+                int id;
+                bool isCorrectIdFormat = int.TryParse(idStr, out id);
+                //if (isCorrectIdFormat= false ) 
+                //{
+                //    ConsoleColor.Red.WriteConsole("Id format is wrong, please add again");
+                //    goto Capa;
+
+                //}
+                if (isCorrectIdFormat)
+                {
+                    try
+                    {
+                        //var datass = await  _educationService.GetAllAsync();
+
+                        await _groupService.CreateGroupAsync(new Domain.Models.Group { Name = name,  Capacity = Cap, EducationId = id , CreatedDate = DateTime.Now });
+                        ConsoleColor.Green.WriteConsole("Education successfully added");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ConsoleColor.Red.WriteConsole(ex.Message);
+                        goto Id;
+
+                    }
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Id format is wrong, please add again");
+                    goto Id;
+                }
+            }
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+
+        
 
     }
 }

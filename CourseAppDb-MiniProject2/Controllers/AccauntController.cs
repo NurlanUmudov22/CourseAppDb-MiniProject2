@@ -29,9 +29,9 @@ namespace CourseAppDb_MiniProject2.Controllers
 
         public async Task RegisterAsync()
         {
-            ConsoleColor.Magenta.WriteConsole("Welcome to our course");
+            ConsoleColor.Magenta.WriteConsole("         Welcome to our course");
 
-            ConsoleColor.Blue.WriteConsole(" Please add your FullName:");
+            ConsoleColor.Blue.WriteConsole(" \n   Please add your FullName:");
         Name: string fullName = Console.ReadLine();
             if (!Regex.IsMatch(fullName, @"^[\p{L}\p{M}' \.\-]+$"))
             {
@@ -84,7 +84,7 @@ namespace CourseAppDb_MiniProject2.Controllers
             }
 
 
-            ConsoleColor.Blue.WriteConsole("Please add your password:");
+            ConsoleColor.Blue.WriteConsole("Please add your password:   (Min: 8 symbol, 1 big letter)");
         Password: string password = Console.ReadLine();
             if (!Regex.IsMatch(password, @"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"))
             {

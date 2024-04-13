@@ -20,6 +20,13 @@ namespace Repository.Repositories
             _context = new AppDbContext();
 
         }
+
+        public async Task CreateAsync(Group group)
+        {
+            await _context.Groups.AddAsync(group);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(int? id)
         {
             _context.Remove(id);
