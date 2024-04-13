@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CourseAppDb-MiniProject2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+058feafaa9b2d313d163510e60fd5769c6691539")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be91d9b2d1f05fad2edbf700cf0676b18f1fe416")]
 [assembly: System.Reflection.AssemblyProductAttribute("CourseAppDb-MiniProject2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CourseAppDb-MiniProject2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Service.Services.Interfaces
 {
-    public interface IUserService
+    public interface IAccountService
     {
-        Task<List<User>> GetAllAsync(); 
+        Task RegisterAsync(User user);
 
+        Task<bool> LoginAsync(string userNameOrEmail, string password);
     }
 }

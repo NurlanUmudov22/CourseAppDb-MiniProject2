@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Service.Helpers.Enums
 {
-    public enum SortWithCreatedDate
+    public enum LoginOperatType
     {
-        asc,
-        desc
+        Register = 1,
+        Login = 2
     }
 }
