@@ -1,5 +1,8 @@
-﻿using Repository.Data;
+﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Repository.Data;
 using Repository.Repositories.Interfaces;
+using Service.Helpers.Exceptions;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Service.Services
 {
-    internal class UserServise : IUserService
+    public class UserServise : IUserService
     {
 
         private readonly AppDbContext _context;
@@ -20,14 +23,29 @@ namespace Service.Services
 
         }
 
-        //public Task CreateUserAsync(string fullName, string username, string email, string password)
-        //{
-        //    await _context.CreateUserAsync(fullName, username, email, password);
-        //}
+        public async Task CreateUserAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+            //if (user.Email.Length > 1)
+            //{
+            //    throw new ("This email has. Please add new email");          
+            //}
+            //if (user.UserName.Length >1)
+            //{
+            //    throw new("This username has. Please add new username");
+            //}
 
-        //public Task<bool> LoginAsync(string username, string password)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        }
+
+        public async Task<bool> LoginAsync(string usernameOrEmail, string password)
+        {
+            var data = await _context.Users.FirstOrDefaultAsync(m => m.UserName == usernameOrEmail || m.Email == usernameOrEmail && m.Password == password);
+            if (data != null)
+            {
+                throw new("Login failed");
+            }
+            return true;
+        }
     }
 }

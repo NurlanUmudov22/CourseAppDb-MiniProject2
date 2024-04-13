@@ -9,9 +9,9 @@ namespace Repository.Repositories.Interfaces
 {
     public  interface IUserRepository
     {
-        //Task CreateUserAsync(string fullName, string username, string email, string password);
+        Task  CreateUserAsync(User user );
 
-        //Task<bool> LoginAsync(string usernameOrEmail, string password);
+        Task<bool> LoginAsync(string userNameOrEmail, string password);
 
 
     }

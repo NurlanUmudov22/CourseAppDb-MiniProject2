@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,8 @@ namespace Service.Services.Interfaces
 {
     public interface IUserService
     {
-        //Task CreateUserAsync(string fullName, string username, string email, string password);
+        Task CreateUserAsync(User user);
 
-        //Task<bool> LoginAsync(string username, string password);
-
+        Task<bool> LoginAsync(string userNameOrEmail, string password);
     }
 }
