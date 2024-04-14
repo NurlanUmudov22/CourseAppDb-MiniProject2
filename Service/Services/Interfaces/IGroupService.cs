@@ -26,6 +26,6 @@ namespace Service.Services.Interfaces
 
         Task<List<Domain.Models.Group>> FilterByEduNameAsync(string name);
 
-        Task CreateGroupAsync(Domain.Models.Group group);
+        Task CreateGroupAsync(Domain.Models.Group group); 
     }
 }

@@ -11,6 +11,7 @@ EducationController educationController = new EducationController();
 //await educationController.DeleteAsync();
 
 //await educationController.GetAllAsync();
+//await educationController.UpdateEduAsync();
 
 //await  educationController.GetByIdAsync();
 
@@ -63,57 +64,60 @@ AccauntController accauntController = new AccauntController();
 //await accauntController.Login();
 
 
+UserController userController = new UserController();
+//await userController.GetAllAsync();
+
 
 
 static void GetMenues()
 {
-    ConsoleColor.Yellow.WriteConsole("\n Choose one operation : \n  1. GetAll Educations \n " + " 2. GetById Education \n  3. Education delete \n  4. Education update \n  5. SearchByName Education \n  6. GetAllWithGroups Education \n  7. SortWithCreatedDate Education \n  8. GetAll Groups \n  9. GetById Group \n  10. Delete Group \n  11. Update Group \n  12. SearchByName Group \n  13. FilterByEduName  \n  14. GetAllWithEducationId Groups \n  15. SortWithCapacity Group \n  16. Create Group \n  17  Create Education");
+    ConsoleColor.Yellow.WriteConsole("\n Choose one operation : \n  1. GetAll Educations \n  2. GetById Education \n  3. Education delete \n  4. Education update \n  5. SearchByName Education \n  6. GetAllWithGroups Education \n  7. SortWithCreatedDate Education \n  8. GetAll Groups \n  9. GetById Group \n  10. Delete Group \n  11. Update Group \n  12. SearchByName Group \n  13. FilterByEduName  \n  14. GetAllWithEducationId Groups \n  15. SortWithCapacity Group \n  16. Create Group \n  17. Create Education \n  18. GetALLUSERS");
 
 }
 
-////GetMenues();
+//GetMenues();
 
-//static void LoginMenues()
-//{
-//    ConsoleColor.Yellow.WriteConsole(" Menu : \n  1. Register \n " + " 2. Login ");
+static void LoginMenues()
+{
+    ConsoleColor.Yellow.WriteConsole(" Menu : \n  1. Register \n " + " 2. Login ");
 
-//}
+}
 ////LoginMenues();
 
 
-//while (accauntController.LoginSuccess==false)
-//{
-//    LoginMenues();
-//            Operation: string operationStr = Console.ReadLine();
+while (accauntController.LoginSuccess == false)
+{
+    LoginMenues();
+Operation: string operationStr = Console.ReadLine();
 
-//    int operation;
+    int operation;
 
-//    bool isCorrectOperationFormat = int.TryParse(operationStr, out operation);
+    bool isCorrectOperationFormat = int.TryParse(operationStr, out operation);
 
-//    if (isCorrectOperationFormat)
-//    {
-//        switch (operation)
-//        {
-//            case (int)LoginOperatType.Register:
-//               await  accauntController.RegisterAsync();
-//                break;
-//            case (int)LoginOperatType.Login:
-//               await  accauntController.LoginAsync();
-//                break;
-//            default:
-//                ConsoleColor.Red.WriteConsole("Operation format is wrong, please choose again");
-//                goto Operation;
+    if (isCorrectOperationFormat)
+    {
+        switch (operation)
+        {
+            case (int)LoginOperatType.Register:
+                await accauntController.RegisterAsync();
+                break;
+            case (int)LoginOperatType.Login:
+                await accauntController.LoginAsync();
+                break;
+            default:
+                ConsoleColor.Red.WriteConsole("Operation format is wrong, please choose again");
+                goto Operation;
 
-//        }
-//    }
-//                else
-//                {
-//                   ConsoleColor.Red.WriteConsole("Operations is wrong, please add operation again ");
-//                   goto Operation;
+        }
+    }
+    else
+    {
+        ConsoleColor.Red.WriteConsole("Operations is wrong, please add operation again ");
+        goto Operation;
 
-//                 }
+    }
 
-//}
+}
 
 
 
@@ -142,7 +146,7 @@ Operation: string operationStr = Console.ReadLine();
                 await educationController.DeleteAsync();
                 break;
             //case (int)OperationType.UpdateEducation:
-            //   await educationController.GetById();
+            //   await educationController.();
             //    break;
             case (int)OperationType.SearchByNameEducation:
                 await educationController.SearchByNameAsync();
@@ -163,7 +167,7 @@ Operation: string operationStr = Console.ReadLine();
                 await groupController.DeleteAsync();
                 break;
             //case (int)OperationType.UpdateGroup:
-            //  await  groupController.StudentDelete();
+            //  await  groupController.();
             //    break;
             case (int)OperationType.SearchByNameGroup:
                 await groupController.SearchByNameAsync();
@@ -182,6 +186,9 @@ Operation: string operationStr = Console.ReadLine();
                 break;
             case (int)OperationType.CreateEdu:
                 await educationController.CreateEduAsync();
+                break;
+            case (int)OperationType.GetAllUsers:
+                await userController.GetAllAsync();
                 break;
             default:
                 ConsoleColor.Red.WriteConsole("Operation format is wrong, please choose again");

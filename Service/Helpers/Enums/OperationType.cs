@@ -23,8 +23,9 @@ namespace Service.Helpers.Enums
         FilterByEduName = 13,
         GetAllWithEducationIdGroups = 14,
         SortWithCapacityGroup = 15,
-        CreateEdu = 16,
-        CreateGroup = 17
+        CreateGroup = 16,
+        CreateEdu = 17,
+        GetAllUsers = 18
 
     }
 }

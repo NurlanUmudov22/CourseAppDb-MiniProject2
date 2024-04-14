@@ -4,9 +4,12 @@ using Repository.Data;
 using Repository.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Repository.Repositories
 {
@@ -61,9 +64,22 @@ namespace Repository.Repositories
             return await _context.Educations.ToListAsync();
         }
 
-        public async Task<Education> Update(int id)
+        public async Task UpdateAsync(Education education )
         {
-            return await _context.Educations.FirstOrDefaultAsync(m => m.Id == id);
+            _context.Update(education.Name);
+            _context.Update(education.Color);
+            await _context.SaveChangesAsync();
+
+
         }
+
+
+
+        //public async Task<Education> Update(int id)
+        //{
+        //    return await _context.Educations.FirstOrDefaultAsync(m => m.Id == id);
+        //}
+
+
     }
 }

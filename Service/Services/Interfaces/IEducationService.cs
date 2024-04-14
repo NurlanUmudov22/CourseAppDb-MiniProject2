@@ -24,11 +24,12 @@ namespace Service.Services.Interfaces
         Task<List<Education>> SortWithCreatedDateAsync(string order);  //+
 
 
-        Task<Education> UpdateAsync(int id, string name);
+        //Task<Education> UpdateAsync(int id, string name);
 
-        Task CreateEduAsync(Education education);
+        Task CreateEduAsync(Education education);  //+
 
 
+        Task UpdateAsync(int? id, string name, string color);
 
 
     }

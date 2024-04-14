@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Repository.Data;
+using Repository.Repositories.Interfaces;
 using Service.Helpers.Enums;
 using Service.Helpers.Exceptions;
 using Service.Services.Interfaces;
@@ -115,40 +116,20 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
+        public async Task UpdateAsync(int? id, string name, string color)
+        {
+            
 
-        //--
-        //public async Task<Education> UpdateNameAsync(int id, string name)
-        //{
-        //    var education = await _context.Educations.Update(id);
+            var education = await _context.Educations.FirstOrDefaultAsync(m=>m.Id==id);
 
-        //    if (education == null)
-        //    {
-        //        throw new NotFoundException("Data not found");
+            education.Name = name;
+            education.Color = color;
 
-        //    }
-        //    else
-        //    {
-        //        education.Name = name;
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    return education;
-        //}
-        //public async Task<Education> UpdateColorAsync(int id, string color)
-        //{
-        //    var education = await _context.Educations.Update(id);
+            _context.Update(education.Name);
+            _context.Update(education.Color);
+              await _context.SaveChangesAsync();
+           
+        }
 
-        //    if (education == null)
-        //    {
-        //        throw new NotFoundException("Data not found");
-
-        //    }
-        //    else
-        //    {
-        //        education.Color = color;
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    return education;
-
-        //}
     }
 }

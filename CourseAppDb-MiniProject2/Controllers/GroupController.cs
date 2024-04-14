@@ -59,7 +59,7 @@ namespace CourseAppDb_MiniProject2.Controllers
 
             foreach (var item in datas)
             {
-                string data = $"Name: {item.Name}, Capacity: {item.Capacity}, Education: {item.Education.Name} ";
+                string data = $"Id: {item.Id},Name: {item.Name}, Capacity: {item.Capacity}, Education: {item.Education.Name}, CreatedDate: {item.CreatedDate}";
                 ConsoleColor.Cyan.WriteConsole(data);
 
             }
@@ -137,7 +137,7 @@ namespace CourseAppDb_MiniProject2.Controllers
 
         public async Task GetAllWithEducationIdAsync()
         {
-            Console.WriteLine("Add Education id:");
+            ConsoleColor.Blue.WriteConsole("Add Education id:");
         Id: string eduId = Console.ReadLine();
 
             int id;
@@ -199,7 +199,7 @@ namespace CourseAppDb_MiniProject2.Controllers
                         foreach (var item in result)
                         {
                             string data = $"Group Name: {item.Name}, Education: {item.Education.Name}";
-                            Console.WriteLine(data);
+                            ConsoleColor.Cyan.WriteConsole(data);
                         }
                     }
                     else
